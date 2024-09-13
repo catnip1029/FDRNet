@@ -11,5 +11,7 @@ scipy
 tb-nightly
 torch>=1.7
 torchvision
+einops
+timm
 tqdm
 yapf

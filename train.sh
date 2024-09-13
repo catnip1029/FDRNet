@@ -1,0 +1,1 @@
+torchrun --nproc_per_node=2 --master_port=4321 basicsr/train.py -opt options/train/OctaveIR/train_OctaveIR.yml --launcher pytorch --auto_resume

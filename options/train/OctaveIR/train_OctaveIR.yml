@@ -10,10 +10,9 @@ datasets:
   train:
     name: DIV2K
     type: PairedImageDataset
-    dataroot_gt: datasets/SISR_datasets_HR_LR_x234_BIBDDN/DIV2K/DIV2K_train_HR
-    dataroot_lq: datasets/SISR_datasets_HR_LR_x234_BIBDDN/DIV2K/DIV2K_train_LR_bicubic/x4
-    # meta_info_file: basicsr/data/meta_info/meta_info_DIV2K800sub_GT.txt
-    filename_tmpl: '{}'
+    dataroot_gt: datasets/DIV2K/DIV2K_train_HR
+    dataroot_lq: datasets/DIV2K/DIV2K_train_LR_bicubic/X4
+    filename_tmpl: '{}x4'
     io_backend:
       type: disk
 
@@ -23,15 +22,16 @@ datasets:
 
     # data loader
     num_worker_per_gpu: 12
-    batch_size_per_gpu: 16
+    batch_size_per_gpu: 8
     dataset_enlarge_ratio: 10
     prefetch_mode: ~
 
   val:
     name: Set5
     type: PairedImageDataset
-    dataroot_gt: datasets/SISR_datasets_HR_LR_x234_BIBDDN/Set5/HR/x4
-    dataroot_lq: datasets/SISR_datasets_HR_LR_x234_BIBDDN/Set5/LR/x4
+    dataroot_gt: datasets/Set5/HR
+    dataroot_lq: datasets/Set5/LR_bicubic/X4
+    filename_tmpl: '{}x4'
     io_backend:
       type: disk
 
@@ -86,7 +86,7 @@ val:
   metrics:
     psnr: # metric name, can be arbitrary
       type: calculate_psnr
-      crop_border: 2
+      crop_border: 4
       test_y_channel: true
 
 # logging settings
